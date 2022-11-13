@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: random-seed
+type: Opaque
+data:
+    random-seed: MlJVSFlBeUpXZERkWE9pY1pmblRSdz09
