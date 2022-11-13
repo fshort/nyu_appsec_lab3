@@ -59,7 +59,7 @@ The added the reference to it in the django-deploy.yaml file:
             name: random-seed
             key: random-seed 
 ```
-I then changed the settings.py code to remove the hardcoded random seed value and replaced with the following line which sources the RANDOM_KEY environment variable from the container:
+I then changed the settings.py code to remove the hardcoded random seed value and replaced with the following line which sources the RANDOM_SEED environment variable from the container:
 ```
 RANDOM_SEED = base64.b64decode(os.environ.get('RANDOM_SEED'))
 ```
