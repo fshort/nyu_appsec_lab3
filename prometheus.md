@@ -51,3 +51,11 @@ kubectl apply -f db/k8
 kubectl apply -f GiftcardSite/k8
 kubectl apply -f proxy/k8
 ```
+
+## Prometheus Dashboard
+Once everything was redeployed I ran the following command to get to the prometheus dashboard to see the metrics being collected:
+```
+minikube service monitor-prometheus-server
+```
+This launched the dashboard in my browser and after similating some activity in the web app, I can see metrics being collected (this shows a few login attempts):
+<img src="./prometheus.png">
