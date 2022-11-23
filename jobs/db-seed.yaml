@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-seed-data
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysql-seed-data
+          image: nyuappsec/assign3:v0
+          command: ["/bin/sh", "-c"]
+          args: ["mysql -h $MYSQL_HOST --protocol=TCP -uroot -p$MYSQL_ROOT_PASSWORD < /seed.sql"]
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                    name: mysql-root-secret
+                    key: password
+
+            - name: MYSQL_DATABASE
+              value: GiftcardSiteDB
+
+            - name: MYSQL_HOST
+              value: mysql-service
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-volume-mount
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-volume-mount
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+      restartPolicy: Never
+  backoffLimit: 0

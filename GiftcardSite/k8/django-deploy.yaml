@@ -11,7 +11,7 @@ spec:
       pod: assignment3-django-deploy
   template:
     metadata:
-      labels:
+      labels: 
         pod: assignment3-django-deploy
     spec:
       containers:

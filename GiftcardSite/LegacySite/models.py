@@ -40,6 +40,8 @@ class Card(models.Model):
     data = models.BinaryField(max_length=1000)
     product = models.ForeignKey('LegacySite.Product', on_delete=models.CASCADE, default=None)
     amount = models.IntegerField()
+    testField = models.CharField(max_length=5, default=None)
+    testField2 = models.CharField(max_length=5, default=None)
     fp = models.CharField(max_length=100, unique=True)
     user = models.ForeignKey('LegacySite.User', on_delete=models.CASCADE)
     used = models.BooleanField(default=False)
